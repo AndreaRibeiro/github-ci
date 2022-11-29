@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "65cfdaf3-23e5-43e2-85d0-7893faec6d95",
+		"name": "viacep-consulta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24048864"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function zipCode(){\r",
+							"    var zipCode = [\"11050241\", \"11015310\"];\r",
+							"    var randonItem = zipCode[Math.floor(Math.random() * zipCode.length)];\r",
+							"    return randonItem;\r",
+							"\r",
+							"}\r",
+							"pm.variables.set(\"ZipCode\", zipCode());"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/{{ZipCode}}/json/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"{{ZipCode}}",
+						"json",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
